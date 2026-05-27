@@ -158,4 +158,24 @@ def status(m):
     )
     bot.reply_to(m, status_text, parse_mode="Markdown")
 
+# --- Pehle Flask ka code aayega ---
+import os
+from threading import Thread
+import flask
+
+app = flask.Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running!"
+
+def run():
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
+
+# Isse Flask server background mein chalega aur bot block nahi hoga
+Thread(target=run).start()
+
+# --- Sabse aakhri line ye honi chahiye ---
 bot.polling(none_stop=True)
+
