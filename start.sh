@@ -16,14 +16,14 @@ echo "🧹 Cleaning old sessions..."
 pkill -f api.py
 pkill -f drx.py
 
-# 4. API ko background mein start karega (Port 8080)
+# # 4. API ko background mein start karega (Port 8080)
 echo "🌐 Starting Flask API on port 8080..."
-nohup python3 api.py > api_logs.txt 2>&1 &
-sleep 2
+python3 api.py &
+sleep 3
 
-# 5. Telegram Bot ko background mein start karega
+# # 5. Telegram Bot ko FOREGROUND mein start karega (Isse Render active rahega)
 echo "🤖 Starting Telegram Bot..."
-nohup python3 drx.py > bot_logs.txt 2>&1 &
+python3 drx.py
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "✅ SYSTEM IS NOW LIVE!"
